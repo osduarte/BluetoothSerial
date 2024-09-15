@@ -9,8 +9,8 @@
     <description>Bluetooth Serial Communication Plugin</description>
     <license>Apache 2.0</license>
     <keywords>bluetooth, BLE, arduino</keywords>
-    <repo>https://github.com/don/BluetoothSerial.git</repo>
-    <issue>https://github.com/don/BluetoothSerial/issues</issue>
+    <repo>https://github.com/osduarte/BluetoothSerial.git</repo>
+    <issue>https://github.com/osduarte/BluetoothSerial/issues</issue>
 
     <js-module src="www/bluetoothSerial.js" name="bluetoothSerial">
         <clobbers target="window.bluetoothSerial" />
@@ -33,6 +33,9 @@
             <uses-permission android:name="android.permission.BLUETOOTH" />
             <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
             <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+            <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
         </config-file>
 
     </platform>
