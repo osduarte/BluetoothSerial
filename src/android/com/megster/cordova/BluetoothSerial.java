@@ -86,6 +86,10 @@ public class BluetoothSerial extends CordovaPlugin {
 
     // Android 23 requires user to explicitly grant permission for location to discover unpaired
     private static final String ACCESS_COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
+    private static final String ACCESS_FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
+    private static final String BLUETOOTH_SCAN = Manifest.permission.BLUETOOTH_SCAN;
+    private static final String BLUETOOTH_CONNECT = Manifest.permission.BLUETOOTH_CONNECT;
+
     private static final int CHECK_PERMISSIONS_REQ_CODE = 2;
     private CallbackContext permissionCallback;
 
@@ -218,6 +222,27 @@ public class BluetoothSerial extends CordovaPlugin {
             } else {
                 permissionCallback = callbackContext;
                 cordova.requestPermission(this, CHECK_PERMISSIONS_REQ_CODE, ACCESS_COARSE_LOCATION);
+            }
+            
+            if (cordova.hasPermission(ACCESS_FINE_LOCATION)) {
+                discoverUnpairedDevices(callbackContext);
+            } else {
+                permissionCallback = callbackContext;
+                cordova.requestPermission(this, CHECK_PERMISSIONS_REQ_CODE, ACCESS_FINE_LOCATION);
+            }
+            
+            if (cordova.hasPermission(BLUETOOTH_SCAN)) {
+                discoverUnpairedDevices(callbackContext);
+            } else {
+                permissionCallback = callbackContext;
+                cordova.requestPermission(this, CHECK_PERMISSIONS_REQ_CODE, BLUETOOTH_SCAN);
+            }
+            
+            if (cordova.hasPermission(BLUETOOTH_CONNECT)) {
+                discoverUnpairedDevices(callbackContext);
+            } else {
+                permissionCallback = callbackContext;
+                cordova.requestPermission(this, CHECK_PERMISSIONS_REQ_CODE, BLUETOOTH_CONNECT);
             }
 
         } else if (action.equals(SET_DEVICE_DISCOVERED_LISTENER)) {
