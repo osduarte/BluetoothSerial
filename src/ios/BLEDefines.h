@@ -47,3 +47,5 @@
 #define HC02_ADV_UUID "18F0"
 
 #define RBL_BLE_FRAMEWORK_VER                    0x0200
+
+#define XIAO_UUID                    "19B10000-E8F2-537E-4F6C-D104768A1214"
